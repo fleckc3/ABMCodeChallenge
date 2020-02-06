@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Edifact Parser class takes an Edifact message text and parses out the LOC
- * segments and populates an array with the 2nd and 3rd element of each segment
- * @author Colin
+ * Edifact Parser class takes an Edifact message and parses out the LOC
+ * segments. An array is then populated with the 2nd and 3rd element of each LOC segment
+ * @author Colin Fleck
+ * @version 1.0
+ * @since 06/02/20
  *
  */
 public class EdifactParser {
@@ -18,6 +20,11 @@ public class EdifactParser {
 	//public array populated with 2nd and 3rd LOC elements of EDIFACT message
 	public static ArrayList<String> secondThirdArray = new ArrayList<String>();
 	
+	/**
+	 * Main method runs the the code contained in the EdifactParser.class
+	 * @param args passes arguments to command line
+	 * @throws java.io.IOException when there is an issue with the creating or reading edifact file
+	 */
 	public static void main(String[] args) {
 		
 		//creates file with edifact text
@@ -42,8 +49,11 @@ public class EdifactParser {
 			File edifact = new File("edifact.txt");
 			Scanner fileReader = new Scanner(edifact);
 			
+			//While loop to run following code until the end of the file
 			while (fileReader.hasNextLine()) {
 				String lineData = fileReader.nextLine();
+				
+				//call the parser method on each line of the file
 				parser(lineData);
 			}
 			
@@ -57,7 +67,7 @@ public class EdifactParser {
 	}
 	
 	/**
-	 * Method checks for LOC on ach line of the message read by the scanner.
+	 * Method checks for LOC on each line of the message read by the scanner.
 	 * Adds the 2nd and 3rd parameters to an array
 	 * @param lineData
 	 */
