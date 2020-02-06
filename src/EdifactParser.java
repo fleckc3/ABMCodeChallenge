@@ -1,6 +1,8 @@
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Edifact Parser class takes an Edifact message text and parses out the LOC
@@ -29,6 +31,16 @@ public class EdifactParser {
 							"DTM+268:20090626:102'\r\n" + 
 							"DTM+182:20090527:102'");
 					edifactText.close();
+					
+					//set up edifact.txt to be read as a file by scanner
+					File edifact = new File("edifact.txt");
+					Scanner fileReader = new Scanner(edifact);
+					
+					while (fileReader.hasNextLine()) {
+						String lineData = fileReader.nextLine();
+						//parser(lineData);
+						System.out.println(lineData);
+					}
 					
 				} catch (IOException e) {
 					//gives error if one occurs during the file writing
