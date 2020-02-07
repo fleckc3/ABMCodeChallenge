@@ -42,11 +42,60 @@ public class RefTextValues {
 			Document document = parser.parse(xmlFile);
 			document.getDocumentElement().normalize();
 			
+			//xml document passed to extractRefText method
+			extractRefText(document);
+			
 			//throw exception error
 		} catch (ParserConfigurationException | SAXException | IOException e1) {
 			e1.printStackTrace();
 		}
 	
+	}
+	
+	/**
+	 * This method takes the XML document object and traverses the tree via for loop. 
+	 * It then finds the RefText values associated with the Reference elements whose attributes
+	 * equal 'MWB', 'TRV', and 'CAR'
+	 * @param document is passed from the main method and used to find reftext values
+	 */
+	public static void extractRefText(Document document) {
+		
+		//gets the list of reference tags
+		NodeList nList = document.getElementsByTagName("Reference");
+		
+		//loops through the reference tag list
+		for (int i = 0; i < nList.getLength(); i++) {
+			
+			Node child = nList.item(i);
+			//checks each element if it is a node
+			if (child.getNodeType() == Node.ELEMENT_NODE) {
+				
+				//sets the element to the current child item
+				Element element = (Element) child;
+				
+				//gets refcode attribute of the element if it has one
+				String checkAttribute = element.getAttribute("RefCode");
+				
+				/*checks the attribute code to see if it matches MWB, TRV, or CAR.
+				 * If so it sets the value to the public String declared at top.
+				 */
+				if (checkAttribute.contentEquals("MWB")) {
+					String refTextValue = element.getElementsByTagName("RefText").item(0).getTextContent();
+					System.out.println(refTextValue);
+					mwbRefTextValue = refTextValue;
+				} else if (checkAttribute.contentEquals("TRV")) {
+					String refTextValue = element.getElementsByTagName("RefText").item(0).getTextContent();
+					System.out.println(refTextValue);
+					trvRefTextValue = refTextValue;
+				} else if (checkAttribute.contentEquals("CAR")) {
+					String refTextValue = element.getElementsByTagName("RefText").item(0).getTextContent();
+					System.out.println(refTextValue);
+					carRefTextValue = refTextValue;
+				}
+			}
+		}
+		//Print reftext values
+		System.out.println("MWB RefText value: " + mwbRefTextValue + "\n" + "TRV RefText value: " + trvRefTextValue + "\n" + "CAR RefText Value: " + carRefTextValue);
 	}
 	
 }

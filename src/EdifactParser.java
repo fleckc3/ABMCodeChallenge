@@ -1,10 +1,8 @@
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -56,6 +54,8 @@ public class EdifactParser {
 				//call the parser method on each line of the file
 				parser(lineData);
 			}
+			
+			fileReader.close();
 			
 		} catch (IOException e) {
 			//gives error if one occurs during the file writing
