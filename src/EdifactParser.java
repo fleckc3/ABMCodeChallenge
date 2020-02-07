@@ -23,7 +23,7 @@ public class EdifactParser {
 	/**
 	 * Main method runs the the code contained in the EdifactParser.class
 	 * @param args passes arguments to command line
-	 * @throws java.io.IOException when there is an issue with the creating or reading edifact file
+	 * @throws java.io.IOException when there is an issue with creating or reading edifact file
 	 */
 	public static void main(String[] args) {
 		
