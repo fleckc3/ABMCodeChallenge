@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InputDocument>
+	<DeclarationList>
+		<Declaration Command="DEFAULT" Version="5.13">
+			<DeclarationHeader>
+				<Jurisdiction>IE</Jurisdiction>
+				<CWProcedure>IMPORT</CWProcedure>
+				<DeclarationDestination>CUSTOMSWAREIE</DeclarationDestination>
+				<DocumentRef>71Q0019681</DocumentRef>
+				<SiteID>DUB</SiteID>
+				<AccountCode>G0779837</AccountCode>
+			</DeclarationHeader>
+		</Declaration>
+	</DeclarationList>
+</InputDocument>
